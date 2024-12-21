@@ -1,0 +1,18 @@
+﻿@model Student
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1> Are you Sure To Delete That Student</h1>
+<form asp-action="Delete" method="post">
+    <partial name="PartialViews/DetailsDeletePartial" model="@Model" />
+    <div class="d-flex gap-2">
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a class="btn btn-secondary" asp-area="" asp-controller="Student" asp-action="Index">Cancel</a>
+    </div>
+</form>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

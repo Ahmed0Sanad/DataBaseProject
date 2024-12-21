@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Course>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="mb-4 text-center">Course</h1>
+<a asp-area="" asp-controller="Course" asp-action="Create" class="btn btn-primary mb-3">Create New Course</a>
+
+<!-- Table with Bootstrap classes -->
+@if (Model.Any())
+{
+    <table id="employeeTable" class="table table-striped table-bordered text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>@Html.DisplayNameFor(e => e.Id)</th>
+                <th>@Html.DisplayNameFor(e => e.Title)</th>
+                <th>@Html.DisplayNameFor(e => e.Price)</th>
+                <th>@Html.DisplayNameFor(e => e.Syllabus)</th>
+                <th colspan="4">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var e in Model)
+            {
+                <tr>
+                    <td>@e.Id</td>
+                    <td>@e.Title</td>
+                    <td>@e.Price</td>
+                    <td>@e.Syllabus</td>
+                    <td>
+                        <a asp-area="" asp-controller="OfferedCourse" asp-action="Offer" asp-route-id="@e.Id" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-plus"></i> Offer
+                        </a>
+                    </td>
+                    <partial name="_BottomPartial" model="@e.Id" />
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h2 class="text-danger text-center">There are no Courses.</h2>
+}
+
+
+<!-- Add Bootstrap JS (optional for interactivity) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>

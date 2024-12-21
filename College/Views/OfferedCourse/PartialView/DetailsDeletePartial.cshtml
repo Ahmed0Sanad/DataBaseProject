@@ -1,0 +1,43 @@
+﻿@model OfferedCourse
+<div>
+    <div class="form-group mb-3">
+        <label asp-for="Course.Title" class="form-label">Course Title</label>
+        <input type="text" asp-for="Course.Title" id="Title" class="form-control " readonly />
+
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Course.Price" class="form-label">Price</label>
+        <input type="text" asp-for="Course.Price" id="Num" class="form-control" readonly />
+
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Course.Syllabus" class="form-label">Syllabus</label>
+        <input type="text" asp-for="Course.Syllabus" id="Code" class="form-control" readonly />
+
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="Year" class="form-label">Year</label>
+        <input type="number" asp-for="Year"  class="form-control" readonly />
+
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="Semester" class="form-label">Semseter</label>
+        <input type="text" asp-for="Semester"  class="form-control" readonly />
+
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="SectionNum" class="form-label">Section Number</label>
+        <input type="number" asp-for="SectionNum"  class="form-control" readonly />
+
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="Time" class="form-label">Time</label>
+        <input type="time" asp-for="Time"  class="form-control" readonly />
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="ClassRoom" class="form-label">Class Room</label>
+        <input type="number" asp-for="ClassRoom"  class="form-control" readonly />
+    </div>
+</div>

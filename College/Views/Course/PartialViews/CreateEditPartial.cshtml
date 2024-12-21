@@ -1,0 +1,30 @@
+﻿@model Course
+
+<div class="form-group mb-3">
+    <label asp-for="Title" class="form-label">Course Title</label>
+    <input type="text" asp-for="Title" id="Title" class="form-control" />
+    <span asp-validation-for="Title" class="text-danger"></span>
+</div>
+
+<div class="form-group mb-3">
+    <label asp-for="Price" class="form-label">Course Price</label>
+    <input type="text" asp-for="Price" id="Num" class="form-control" />
+    <span asp-validation-for="Price" class="text-danger"></span>
+</div>
+
+<div class="form-group mb-3">
+    <label asp-for="Syllabus" class="form-label">Syllabus</label>
+    <input type="text" asp-for="Syllabus" id="Code" class="form-control" />
+    <span asp-validation-for="Syllabus" class="text-danger"></span>
+</div>
+
+<div class="form-group mb-3">
+    <label class="form-label">Prerequisites</label>
+    <select name="selectedPrerequisites" class="form-control" multiple>
+        @foreach (var course in ViewBag.Course)
+        {
+            <option value="@course.Id">@course.Title</option>
+        }
+    </select>
+</div>
+

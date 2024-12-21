@@ -1,0 +1,22 @@
+﻿@model Student
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h1 class="mb-4">Add New Student</h1>
+
+<form asp-action="Create" method="post" class="needs-validation" novalidate>
+    <partial name="PartialViews/CreateEditPartial" model="@Model" />
+
+    <div class="d-flex gap-2">
+        <input type="submit" name="Submit" value="Submit" class="btn btn-primary" />
+        <a class="btn btn-secondary" asp-area="" asp-controller="Student" asp-action="Index">Back To List</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

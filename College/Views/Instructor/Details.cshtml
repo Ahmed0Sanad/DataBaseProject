@@ -1,0 +1,16 @@
+﻿@model Instructor
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+<partial name="PartialViews/DetailsDeletePartial" model="@Model" />
+<div class="d-flex gap-2">
+    <a class="btn btn-secondary" asp-area="" asp-controller="Instructor" asp-action="Index">Back To List</a>
+    <a class="btn btn-primary" asp-area="" asp-controller="Instructor" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    <div>
+        @section Scripts {
+            <partial name="_ValidationScriptsPartial" />
+        }
