@@ -14,5 +14,12 @@ namespace BAL.Repositories
         public InstructorRepository(AppDbContext appDbContext) : base(appDbContext)
         {
         }
+
+        public IEnumerable<Instructor> GetForCourse(OfferedCourse Course)
+        {
+            var insInCourse=Course.Instructors.Select(ins=>ins.Id).ToList();
+            var ins = _appDbContext.Instructors.Where(ins => !insInCourse.Contains(ins.Id)).ToList();
+            return ins;
+        }
     }
 }

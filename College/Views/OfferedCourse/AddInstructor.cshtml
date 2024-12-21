@@ -1,0 +1,25 @@
+﻿@model OfferedCourse
+@{
+    ViewData["Title"] = "AddInstructor";
+}
+
+<h1>Add Instructors To @Model.Course.Title</h1>
+
+
+<form asp-action="AddInstructor" method="post" class="needs-validation" novalidate>
+
+    <div class="form-group mb-3">
+        <label class="form-label">Students</label>
+        <select name="Instructors" class="form-control" multiple>
+            @foreach (var ins in (IEnumerable<Instructor>)ViewBag.ins)
+            {
+                <option value="@ins.Id">@ins.Id __ @ins.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="d-flex gap-2">
+        <input type="submit" name="Submit" value="Add" class="btn btn-primary" />
+        <a class="btn btn-secondary" asp-area="" asp-controller="OfferedCourse" asp-action="Index">Back To List</a>
+    </div>
+</form>

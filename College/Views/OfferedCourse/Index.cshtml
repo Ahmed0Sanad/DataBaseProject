@@ -16,7 +16,7 @@
                 <th>@Html.DisplayNameFor(e => e.Course.Price)</th>
                 <th>@Html.DisplayNameFor(e => e.Year)</th>
                 <th>@Html.DisplayNameFor(e => e.Semester)</th>
-                <th colspan="4">Actions</th>
+                <th colspan="5">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -28,7 +28,11 @@
                     <td>@e.Course.Price</td>
                     <td>@e.Year</td>
                     <td>@e.Semester</td>
-
+                    <td>
+                        <a asp-area="" asp-controller="OfferedCourse" asp-action="AddInstructor" asp-route-id="@e.CourseId" asp-route-year="@e.Year" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-plus"></i> Instructor
+                        </a>
+                    </td>
                     <td>
                         <a asp-area="" asp-controller="OfferedCourse" asp-action="Enroll" asp-route-id="@e.CourseId" asp-route-year="@e.Year" class="btn btn-secondary btn-sm">
                             <i class="fas fa-plus"></i> Enroll

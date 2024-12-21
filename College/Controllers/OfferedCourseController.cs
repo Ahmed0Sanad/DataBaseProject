@@ -106,9 +106,30 @@ namespace College.Controllers
             {
                 var enroll = new Enroll() { StudentId = student, OfferedCourseId = id,Year=year, Grade = 0 };
                 _unitOfWork.Enrolls.Add(enroll);
-                _unitOfWork.Complete();
+               
                
             }
+            _unitOfWork.Complete();
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult AddInstructor([FromRoute] int id, [FromRoute] int year)
+        {
+            var course = _unitOfWork.OfferdCourse.GetWithInstructors(id, year);
+            ViewBag.ins=_unitOfWork.Instructors.GetForCourse(course);
+            return View(course);
+
+        }
+        [HttpPost]
+        public IActionResult AddInstructor([FromRoute] int id, [FromRoute] int year, List<int> Instructors)
+        {
+          
+            
+                _unitOfWork.OfferdCourse.AddInstructor(id,year, Instructors);
+
+                _unitOfWork.Complete();
+
+            
             return RedirectToAction("Index");
         }
     }
