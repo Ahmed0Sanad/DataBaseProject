@@ -12,7 +12,7 @@ namespace DataAccessLayer.Models
 
         [Range(15,65)]
         public int Age { get; set; }
-
+        
         public DateOnly Birth { get; set; }
         public DateTime CreationDate { get; set; }= DateTime.Now;
         public string Name { get; set; }

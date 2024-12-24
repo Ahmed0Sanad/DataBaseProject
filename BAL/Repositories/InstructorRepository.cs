@@ -1,6 +1,8 @@
 ﻿using BAL.Interfaces;
 using DataAccessLayer.Data;
 using DataAccessLayer.Models;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +19,12 @@ namespace BAL.Repositories
 
         public IEnumerable<Instructor> GetForCourse(OfferedCourse Course)
         {
-            var insInCourse=Course.Instructors.Select(ins=>ins.Id).ToList();
-            var ins = _appDbContext.Instructors.Where(ins => !insInCourse.Contains(ins.Id)).ToList();
+            //var insInCourse=Course.Instructors.Select(ins=>ins.Id).ToList();
+            //var ins = _appDbContext.Instructors.Where(ins => !insInCourse.Contains(ins.Id)).ToList();
+            var ins = _appDbContext.Instructors.FromSqlRaw("EXEC GetInstructorsNotInCourse @CourseId, @Year",
+                                         new SqlParameter("@CourseId", Course.CourseId),
+                                         new SqlParameter("@Year", Course.Year))
+                             .ToList();
             return ins;
         }
     }
