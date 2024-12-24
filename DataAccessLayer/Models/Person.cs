@@ -10,6 +10,7 @@ namespace DataAccessLayer.Models
     public class Person:ModelBase
     {
 
+        [Range(15,65)]
         public int Age { get; set; }
 
         public DateOnly Birth { get; set; }

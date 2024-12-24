@@ -2,7 +2,42 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    body {
+/*         background: linear-gradient(to right, #4facfe, #00f2fe); /* Gradient background */ */
+        color: #fff; /* White text for contrast */
+        font-family: 'Arial', sans-serif; /* Professional font */
+    }
+
+    .content-container {
+        margin-top: 10%;
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background for content */
+        border-radius: 15px; /* Rounded corners */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    }
+
+    .display-3 {
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for depth */
+    }
+
+    .lead {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+    }
+</style>
+
+<div class="text-center content-container mx-auto " style="max-width: 1000px; background-color:#212529;">
+    <h1 class="display-3 text-white">Welcome to the College System Platform</h1>
+    <p class="lead text-white">
+        Streamlining education management and empowering institutions to achieve excellence.
+    </p>
+    <hr class="my-4 text-white" style="border-top: 2px solid #fff; width: 50%; margin: auto;">
+    <p class="mt-4 text-white">
+        Developed with dedication and expertise by <span class="font-weight-bold">Team 13</span>.
+    </p>
+    <p class="text-muted small text-white">
+        "Where innovation meets education."
+    </p>
 </div>
