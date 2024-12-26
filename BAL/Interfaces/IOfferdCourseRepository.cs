@@ -12,10 +12,12 @@ namespace BAL.Interfaces
         public  OfferedCourse GetWithYear(int id, int year);
         public void AddInstructor(int id,int year, List<int> Instructors);
 
-        public OfferedCourse GetWithInstructors(int id,int year);
-        
+        public IEnumerable<Instructor> GetInstructorsForCourse(OfferedCourse Course);
+        public List<Student> GetStudentsForCourse(int id);
 
-        
+        public void AddStudents(int id, int year, List<int> students);
+
+
     }
     
 }

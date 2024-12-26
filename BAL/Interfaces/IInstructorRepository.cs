@@ -9,6 +9,6 @@ namespace BAL.Interfaces
 {
     public interface IInstructorRepository:IGenericRepository<Instructor>
     {
-        public IEnumerable<Instructor> GetForCourse(OfferedCourse Course);
+      
     }
 }

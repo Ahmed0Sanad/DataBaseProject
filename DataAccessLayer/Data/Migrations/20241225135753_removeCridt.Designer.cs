@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241224231756_updatebirth")]
-    partial class updatebirth
+    [Migration("20241225135753_removeCridt")]
+    partial class removeCridt
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -85,7 +85,7 @@ namespace DataAccessLayer.Data.Migrations
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<DateOnly?>("Birth")
+                    b.Property<DateOnly>("Birth")
                         .HasColumnType("date");
 
                     b.Property<DateTime>("CreationDate")
@@ -166,7 +166,7 @@ namespace DataAccessLayer.Data.Migrations
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<DateOnly?>("Birth")
+                    b.Property<DateOnly>("Birth")
                         .HasColumnType("date");
 
                     b.Property<DateTime>("CreationDate")
@@ -183,9 +183,6 @@ namespace DataAccessLayer.Data.Migrations
                     b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("StudentProgram")
-                        .HasColumnType("int");
 
                     b.Property<int>("Year")
                         .HasColumnType("int");

@@ -16,7 +16,7 @@ namespace BAL
         private IOfferdCourseRepository _offerdCourseRepository;
         private IInstructorRepository _instructorRepository;
         private IStudentRepository _studentRepository;
-        private IEnrollRepository _enrollRepository;
+        //private IEnrollRepository _enrollRepository;
         public UnitOfWork(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
@@ -29,11 +29,11 @@ namespace BAL
 
         public IInstructorRepository Instructors { get {return _instructorRepository??= new InstructorRepository(_appDbContext); } }
 
-        public IEnrollRepository Enrolls { get { return _enrollRepository??=new EnrollRepository(_appDbContext); } }
-        public int Complete()
-        {
-          return _appDbContext.SaveChanges();
-        }
+        //public IEnrollRepository Enrolls { get { return _enrollRepository??=new EnrollRepository(_appDbContext); } }
+        //public int Complete()
+        //{
+        //  return _appDbContext.SaveChanges();
+        //}
 
         public void Dispose()
         {

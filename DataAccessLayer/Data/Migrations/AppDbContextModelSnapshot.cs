@@ -82,7 +82,7 @@ namespace DataAccessLayer.Data.Migrations
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<DateOnly?>("Birth")
+                    b.Property<DateOnly>("Birth")
                         .HasColumnType("date");
 
                     b.Property<DateTime>("CreationDate")
@@ -163,7 +163,7 @@ namespace DataAccessLayer.Data.Migrations
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<DateOnly?>("Birth")
+                    b.Property<DateOnly>("Birth")
                         .HasColumnType("date");
 
                     b.Property<DateTime>("CreationDate")
@@ -180,9 +180,6 @@ namespace DataAccessLayer.Data.Migrations
                     b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("StudentProgram")
-                        .HasColumnType("int");
 
                     b.Property<int>("Year")
                         .HasColumnType("int");

@@ -39,9 +39,9 @@ namespace College.Controllers
             if (ModelState.IsValid)
             {
                 _unitOfWork.Courses.Add(course);
-                _unitOfWork.Complete();
+             
                 _unitOfWork.Courses.AddPrequestes(course.Id, selectedPrerequisites);
-                _unitOfWork.Complete();
+               
             
                 return RedirectToAction("index");
             }
@@ -54,7 +54,7 @@ namespace College.Controllers
         public IActionResult Edit([FromRoute] int id)
         {
             var Course = _unitOfWork.Courses.Get(id);
-            ViewBag.Course = _unitOfWork.Courses.GetAll();
+            ViewBag.Course = _unitOfWork.Courses.GetAll().Where(c=>c.Id!=id);
 
             return View(Course);
         }
@@ -66,7 +66,7 @@ namespace College.Controllers
                 _unitOfWork.Courses.Update(course);
                 _unitOfWork.Courses.UpdatePrequestes(course.Id, selectedPrerequisites);
 
-                _unitOfWork.Complete();
+             
                 return RedirectToAction("index");
             }
             else
@@ -89,7 +89,7 @@ namespace College.Controllers
                 try
                 {
                     _unitOfWork.Courses.Delete(course);
-                    _unitOfWork.Complete();
+                  
                 }
                 catch (Exception ex) 
                 {

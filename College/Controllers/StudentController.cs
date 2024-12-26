@@ -27,7 +27,7 @@ namespace College.Controllers
             if (ModelState.IsValid)
             {
                 _unitOfWork.Students.Add(student);
-                _unitOfWork.Complete();
+                //_unitOfWork.Complete();
                 return RedirectToAction("Index");
             }
             else
@@ -52,7 +52,7 @@ namespace College.Controllers
             if (ModelState.IsValid)
             {
                 _unitOfWork.Students.Update(student);
-                _unitOfWork.Complete();
+          
                 return RedirectToAction("Index");
             }
             else
@@ -74,7 +74,7 @@ namespace College.Controllers
             if (ModelState.IsValid)
             {
                 _unitOfWork.Students.Delete(student);
-                _unitOfWork.Complete();
+         
                 return RedirectToAction("Index");
             }
             else

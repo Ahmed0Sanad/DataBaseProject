@@ -2,6 +2,7 @@
 using BAL.Repositories;
 using DataAccessLayer.Data;
 using DataAccessLayer.Models;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -17,22 +18,20 @@ namespace BAL.Repositories
         public CourseRepository(AppDbContext appDbContext) : base(appDbContext)
         {
         }
-
+        
         public void AddPrequestes(int id,List<int> prequests)
         {
-            var course = _appDbContext.Courses.Find(id);
-            foreach (var pre in prequests)
-            {
 
-                course.Prerequisites.Add(new Prequestes() { CourseId = course.Id, PrerequisitId = pre });
+            var pre = string.Join(",", prequests);
 
-            }
+            var quary = $"Exec AddPrequestsToCourse  {id},'{pre}'";
+            _appDbContext.Database.ExecuteSqlRaw(quary);
+
         }
 
         public IEnumerable<Course> GetPrequestes(int id )
         {
-           var pre= _appDbContext.Prequestes.Where(p=>p.CourseId == id).Select(p=>p.PrerequisitId).ToList();
-            var courses=_appDbContext.Courses.Where(c=>pre.Contains(c.Id)).ToList();
+           var courses = _appDbContext.Courses.FromSqlRaw("Exec GetPrequestes @Id",  new SqlParameter("@Id", id)).ToList();
 
             return courses;
         }
@@ -40,15 +39,11 @@ namespace BAL.Repositories
         public void UpdatePrequestes(int id, List<int> prequests)
         {
 
-           var oldprequestes=_appDbContext.Prequestes.Where(p=>p.CourseId==id).ToList();
-            _appDbContext.Prequestes.RemoveRange(oldprequestes);
-            
-            foreach (var pre in prequests)
-            {
 
-                _appDbContext.Prequestes.Add(new Prequestes() { CourseId = id, PrerequisitId = pre });
+            var pre = string.Join(",", prequests);
 
-            }
+            var quary = $"Exec UpdatePrequestes  {id},'{pre}'";
+            _appDbContext.Database.ExecuteSqlRaw(quary);
         }
     }
 }

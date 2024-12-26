@@ -28,7 +28,7 @@ namespace College.Controllers
                 try
                 {
                     _unitOfWork.OfferdCourse.Add(offeredCourse);
-                    _unitOfWork.Complete();
+                    //_unitOfWork.Complete();
                     return RedirectToAction("index");
                 }
                 catch
@@ -68,7 +68,7 @@ namespace College.Controllers
             if (ModelState.IsValid)
             {
                 _unitOfWork.OfferdCourse.Update(offeredCourse);
-                _unitOfWork.Complete();
+           
                 return RedirectToAction("index");
             }
             else
@@ -87,7 +87,7 @@ namespace College.Controllers
         {
             var course = _unitOfWork.OfferdCourse.GetWithYear(id, year);
             _unitOfWork.OfferdCourse.Delete(course);
-                _unitOfWork.Complete();
+              
                 return RedirectToAction("index");
          
         }
@@ -95,28 +95,22 @@ namespace College.Controllers
         public IActionResult Enroll([FromRoute] int id, [FromRoute] int year) 
         {
             var course = _unitOfWork.OfferdCourse.GetWithYear(id,year);
-            ViewBag.Students=_unitOfWork.Enrolls.GetForCourse(id);
+            ViewBag.Students=_unitOfWork.OfferdCourse.GetStudentsForCourse(id);
             return View(course);
         }
         [HttpPost]
         public IActionResult Enroll([FromRoute] int id, [FromRoute] int year, List<int> Students) 
         {
   
-            foreach (var student in Students) 
-            {
-                var enroll = new Enroll() { StudentId = student, OfferedCourseId = id,Year=year, Grade = 0 };
-                _unitOfWork.Enrolls.Add(enroll);
-               
-               
-            }
-            _unitOfWork.Complete();
+                _unitOfWork.OfferdCourse.AddStudents(id,year,Students);
+        
             return RedirectToAction("Index");
         }
         [HttpGet]
         public IActionResult AddInstructor([FromRoute] int id, [FromRoute] int year)
         {
-            var course = _unitOfWork.OfferdCourse.GetWithInstructors(id, year);
-            ViewBag.ins=_unitOfWork.Instructors.GetForCourse(course);
+            var course = _unitOfWork.OfferdCourse.GetWithYear(id, year);
+            ViewBag.ins=_unitOfWork.OfferdCourse.GetInstructorsForCourse(course);
             return View(course);
 
         }
@@ -127,7 +121,7 @@ namespace College.Controllers
             
                 _unitOfWork.OfferdCourse.AddInstructor(id,year, Instructors);
 
-                _unitOfWork.Complete();
+               
 
             
             return RedirectToAction("Index");

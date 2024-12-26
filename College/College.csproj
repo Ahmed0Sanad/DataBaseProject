@@ -24,6 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="C:\Users\DELL\source\repos\DataBaseProject\BAL\BAL.csproj" />
+    <ProjectReference Include="C:\Users\DELL\source\repos\DataBaseProject\DataAccessLayer\DataAccessLayer.csproj" />
     <ProjectReference Include="..\BAL\BAL.csproj" />
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
   </ItemGroup>

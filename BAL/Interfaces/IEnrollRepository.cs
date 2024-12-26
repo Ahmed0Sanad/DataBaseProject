@@ -9,6 +9,6 @@ namespace BAL.Interfaces
 {
     public interface IEnrollRepository:IGenericRepository<Enroll>
     {
-        public  List<Student> GetForCourse(int id);
+
     }
 }

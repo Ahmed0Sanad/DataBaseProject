@@ -17,15 +17,6 @@ namespace BAL.Repositories
         {
         }
 
-        public IEnumerable<Instructor> GetForCourse(OfferedCourse Course)
-        {
-            //var insInCourse=Course.Instructors.Select(ins=>ins.Id).ToList();
-            //var ins = _appDbContext.Instructors.Where(ins => !insInCourse.Contains(ins.Id)).ToList();
-            var ins = _appDbContext.Instructors.FromSqlRaw("EXEC GetInstructorsNotInCourse @CourseId, @Year",
-                                         new SqlParameter("@CourseId", Course.CourseId),
-                                         new SqlParameter("@Year", Course.Year))
-                             .ToList();
-            return ins;
-        }
+       
     }
 }

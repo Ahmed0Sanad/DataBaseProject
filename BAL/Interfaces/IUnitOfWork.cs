@@ -12,8 +12,8 @@ namespace BAL.Interfaces
         public IOfferdCourseRepository OfferdCourse { get; }
         public IStudentRepository Students { get; }
         public IInstructorRepository Instructors { get; }
-        public IEnrollRepository Enrolls { get; }
-        public int Complete();
+        //public IEnrollRepository Enrolls { get; }
+        //public int Complete();
 
     }
 }

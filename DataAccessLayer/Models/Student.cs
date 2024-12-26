@@ -13,9 +13,9 @@ namespace DataAccessLayer.Models
     {
         [Range(1,5)]
         public int Year { get; set; }
-        public Program StudentProgram { get; set; }
+        //public Program StudentProgram { get; set; }
         [ValidateNever]
         public ICollection<Enroll> StudentCourses { get; set; }=new HashSet<Enroll>();
     }
-    public enum Program { cridet,Vip,Free}
+    //public enum Program { cridet,Vip,Free}
 }
