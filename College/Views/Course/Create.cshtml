@@ -4,14 +4,15 @@
 }
 
 
-<h1 class="mb-4">Create New Course</h1>
 
-<form asp-action="Create" method="post" class="needs-validation" novalidate>
+<h1 class="mb-4 text-center mt-5">Add New Course</h1>
+
+<form asp-action="Create" method="post" class="needs-validation " novalidate style="padding-left:10%;padding-right:10% ">
     <partial name="PartialViews/CreateEditPartial" model="@Model" />
 
-    <div class="d-flex gap-2">
-        <input type="submit" name="Submit" value="Submit" class="btn btn-primary" />
-        <a class="btn btn-secondary" asp-area="" asp-controller="Course" asp-action="Index">Back To List</a>
+    <div class="d-flex gap-2 justify-content-center ">
+        <input type="submit" name="Submit" style="padding-left:10%;padding-right:10% " value="Submit" class="btn btn-primary " />
+        <a class="btn btn-secondary " style="padding-left:10%;padding-right:10% " asp-area="" asp-controller="Course" asp-action="Index">Back To List </a>
     </div>
 </form>
 

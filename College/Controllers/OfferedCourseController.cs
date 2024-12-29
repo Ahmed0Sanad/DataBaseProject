@@ -10,7 +10,7 @@ namespace College.Controllers
         public OfferedCourseController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            
+
         }
         [HttpGet]
         public IActionResult Offer([FromRoute] int id)
@@ -36,7 +36,7 @@ namespace College.Controllers
                     return RedirectToAction("Offer", id);
 
                 }
-              
+
             }
             else
             {
@@ -45,30 +45,30 @@ namespace College.Controllers
         }
         public IActionResult Index()
         {
-            var offerdCourses= _unitOfWork.OfferdCourse.GetAll();
+            var offerdCourses = _unitOfWork.OfferdCourse.GetAll();
             return View(offerdCourses);
         }
-  
-        public IActionResult Details([FromRoute]int id, [FromRoute] int year) 
+
+        public IActionResult Details([FromRoute] int id, [FromRoute] int year)
         {
             var offeredCourse = _unitOfWork.OfferdCourse.GetWithYear(id, year);
             return View(offeredCourse);
         }
         [HttpGet]
-        public IActionResult Edit([FromRoute]int id, [FromRoute] int year) 
+        public IActionResult Edit([FromRoute] int id, [FromRoute] int year)
         {
 
             var offeredCourse = _unitOfWork.OfferdCourse.GetWithYear(id, year);
             return View(offeredCourse);
         }
         [HttpPost]
-        public IActionResult Edit(OfferedCourse offeredCourse) 
+        public IActionResult Edit(OfferedCourse offeredCourse)
         {
-           
+
             if (ModelState.IsValid)
             {
                 _unitOfWork.OfferdCourse.Update(offeredCourse);
-           
+
                 return RedirectToAction("index");
             }
             else
@@ -83,48 +83,52 @@ namespace College.Controllers
             return View(course);
         }
         [HttpPost]
-        public IActionResult Delete([FromRoute] int id, [FromRoute] int year,int delete)
+        public IActionResult Delete([FromRoute] int id, [FromRoute] int year, int delete)
         {
             var course = _unitOfWork.OfferdCourse.GetWithYear(id, year);
             _unitOfWork.OfferdCourse.Delete(course);
-              
-                return RedirectToAction("index");
-         
+
+            return RedirectToAction("index");
+
         }
         [HttpGet]
-        public IActionResult Enroll([FromRoute] int id, [FromRoute] int year) 
+        public IActionResult Enroll([FromRoute] int id, [FromRoute] int year)
         {
-            var course = _unitOfWork.OfferdCourse.GetWithYear(id,year);
-            ViewBag.Students=_unitOfWork.OfferdCourse.GetStudentsForCourse(id);
+            var course = _unitOfWork.OfferdCourse.GetWithYear(id, year);
+            ViewBag.Students = _unitOfWork.OfferdCourse.GetStudentsForCourse(id);
             return View(course);
         }
         [HttpPost]
-        public IActionResult Enroll([FromRoute] int id, [FromRoute] int year, List<int> Students) 
+        public IActionResult Enroll([FromRoute] int id, [FromRoute] int year, List<int> Students)
         {
-  
-                _unitOfWork.OfferdCourse.AddStudents(id,year,Students);
-        
+
+            _unitOfWork.OfferdCourse.AddStudents(id, year, Students);
+
             return RedirectToAction("Index");
         }
         [HttpGet]
         public IActionResult AddInstructor([FromRoute] int id, [FromRoute] int year)
         {
             var course = _unitOfWork.OfferdCourse.GetWithYear(id, year);
-            ViewBag.ins=_unitOfWork.OfferdCourse.GetInstructorsForCourse(course);
+            ViewBag.ins = _unitOfWork.OfferdCourse.GetInstructorsForCourse(course);
             return View(course);
 
         }
         [HttpPost]
         public IActionResult AddInstructor([FromRoute] int id, [FromRoute] int year, List<int> Instructors)
         {
-          
-            
-                _unitOfWork.OfferdCourse.AddInstructor(id,year, Instructors);
 
-               
+            _unitOfWork.OfferdCourse.AddInstructor(id, year, Instructors);
 
-            
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult Grade([FromRoute]int id)
+        {
+            var students = _unitOfWork.OfferdCourse.GetStudentsInCourse(id);
+
+            ViewBag.students = students;
+            return View();
         }
     }
 }

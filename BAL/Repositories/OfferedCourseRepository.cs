@@ -187,7 +187,12 @@ namespace BAL.Repositories
 
             return result;
         }
-        
+        public IEnumerable<Student> GetStudentsInCourse(int id) 
+        {
+            var students = _appDbContext.Students.Join(_appDbContext.StudentsCourse,s=>s.Id,sc=>sc.StudentId,(s,sc)=>s).ToList();
+
+            return students;
+        }
 
     }
 }

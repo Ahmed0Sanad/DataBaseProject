@@ -3,13 +3,13 @@
     ViewData["Title"] = "AddInstructor";
 }
 
-<h1>Add Instructors To @Model.Course.Title</h1>
+<h1 class ="text-center">Add Instructors To @Model.Course.Title</h1>
 
 
 <form asp-action="AddInstructor" method="post" class="needs-validation" novalidate>
 
     <div class="form-group mb-3">
-        <label class="form-label">Students</label>
+        <label class="form-label">Instructors</label>
         <select name="Instructors" class="form-control" multiple>
             @foreach (var ins in (IEnumerable<Instructor>)ViewBag.ins)
             {
