@@ -36,3 +36,14 @@
 a{
     text-decoration:none;
 }
+.numInput {
+    text-align: center;
+    margin-right: 35px;
+    width: 100px;
+}
+.gradeBox{
+    display:flex;
+    justify-content:space-between;
+    width:50%
+     
+}

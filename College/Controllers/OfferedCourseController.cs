@@ -52,7 +52,7 @@ namespace College.Controllers
         public IActionResult Details([FromRoute] int id, [FromRoute] int year)
         {
             var offeredCourse = _unitOfWork.OfferdCourse.GetWithYear(id, year);
-           
+     
             return View(offeredCourse);
         }
         [HttpGet]
