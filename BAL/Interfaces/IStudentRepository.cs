@@ -9,6 +9,6 @@ namespace BAL.Interfaces
 {
     public interface IStudentRepository:IGenericRepository<Student>
     {
-      
+        public Dictionary<OfferedCourse, int> GetGrades(int id);
     }
 }

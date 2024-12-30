@@ -52,6 +52,7 @@ namespace College.Controllers
         public IActionResult Details([FromRoute] int id, [FromRoute] int year)
         {
             var offeredCourse = _unitOfWork.OfferdCourse.GetWithYear(id, year);
+           
             return View(offeredCourse);
         }
         [HttpGet]
@@ -101,7 +102,7 @@ namespace College.Controllers
         [HttpPost]
         public IActionResult Enroll([FromRoute] int id, [FromRoute] int year, List<int> Students)
         {
-
+            
             _unitOfWork.OfferdCourse.AddStudents(id, year, Students);
 
             return RedirectToAction("Index");
@@ -123,12 +124,20 @@ namespace College.Controllers
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public IActionResult Grade([FromRoute]int id)
+        public IActionResult Grade([FromRoute]int id, [FromRoute] int year)
         {
-            var students = _unitOfWork.OfferdCourse.GetStudentsInCourse(id);
+            var students = _unitOfWork.OfferdCourse.GetStudentsInCourse(id,year);
+           
+        
+            return View(students);
+        }
+        [HttpPost]
+        public IActionResult Grade([FromRoute] int id, [FromRoute] int year, Dictionary<int, int> Grades) 
+        {
+            _unitOfWork.OfferdCourse.AddGrades(id, year, Grades);
+            _unitOfWork.Complete();
+            return RedirectToAction("Index");
 
-            ViewBag.students = students;
-            return View();
         }
     }
 }

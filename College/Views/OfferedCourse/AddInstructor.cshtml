@@ -1,4 +1,5 @@
 ﻿@model OfferedCourse
+
 @{
     ViewData["Title"] = "AddInstructor";
 }
@@ -9,17 +10,22 @@
 <form asp-action="AddInstructor" method="post" class="needs-validation" novalidate>
 
     <div class="form-group mb-3">
-        <label class="form-label">Instructors</label>
-        <select name="Instructors" class="form-control" multiple>
+      
+        <div>
             @foreach (var ins in (IEnumerable<Instructor>)ViewBag.ins)
             {
-                <option value="@ins.Id">@ins.Id __ @ins.Name</option>
+                <div class=" box ">
+                    <label class="form-check-label" for="instructor-@ins.Id">
+                         @ins.Id - @ins.Name
+                    </label>
+                    <input class="form-check-input" type="checkbox" name="Instructors" value="@ins.Id" id="instructor-@ins.Id">
+                    
+                </div>
             }
-        </select>
+        </div>
     </div>
-
-    <div class="d-flex gap-2">
-        <input type="submit" name="Submit" value="Add" class="btn btn-primary" />
-        <a class="btn btn-secondary" asp-area="" asp-controller="OfferedCourse" asp-action="Index">Back To List</a>
+    <div class="d-flex gap-2 justify-content-center">
+        <input style="padding-left:10%;padding-right:10%; "type="submit" name="Submit" value="Add" class="btn btn-primary" />
+        <a style="padding-left:10%;padding-right:10% " class="btn btn-secondary" asp-area="" asp-controller="OfferedCourse" asp-action="Index">Back To List</a>
     </div>
 </form>

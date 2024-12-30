@@ -16,7 +16,7 @@
                 <th>@Html.DisplayNameFor(e => e.Name)</th>
                 <th>@Html.DisplayNameFor(e => e.Year)</th>
          @*        <th>@Html.DisplayNameFor(e => e.StudentProgram)</th> *@
-                <th colspan="3">Actions</th>
+                <th colspan="4">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -27,7 +27,12 @@
                     <td>@e.Name</td>
                     <td>@e.Year</td>
                   @*   <td>@e.StudentProgram</td> *@
-            
+                  <td>
+                        <a asp-area="" asp-controller="Student" asp-action="Grade" asp-route-id="@e.Id" class="btn btn-success btn-sm">
+                            <i class="fas fa-plus"></i> Grades
+                        </a>
+                  </td>
+         
                     <partial name="_BottomPartial" model="@e.Id" />
                 </tr>
             }

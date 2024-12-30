@@ -18,7 +18,7 @@
                 <th>@Html.DisplayNameFor(e => e.Semester)</th>
                 <th>@Html.DisplayNameFor(e => e.ClassRoom)</th>
 
-                <th colspan="5">Actions</th>
+                <th colspan="6">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -31,15 +31,21 @@
                     <td>@e.Year</td>
                     <td>@e.Semester</td>
                     <td>@e.ClassRoom</td>
-
                     <td>
-                        <a asp-area="" asp-controller="OfferedCourse" asp-action="AddInstructor" asp-route-id="@e.CourseId" asp-route-year="@e.Year" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-plus"></i> Instructor
+                        <a asp-area="" asp-controller="OfferedCourse" asp-action="Grade" asp-route-id="@e.CourseId" asp-route-year="@e.Year" class="AllBottom" style="
+    font-size: .875rem;
+   background-color: #7cc235;">
+                            <i class="fas fa-plus " style="color:white"></i>  <p class="text-white myBotttom">Grades</p>
                         </a>
                     </td>
                     <td>
-                        <a asp-area="" asp-controller="OfferedCourse" asp-action="Enroll" asp-route-id="@e.CourseId" asp-route-year="@e.Year" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-plus"></i> Enroll
+                        <a asp-area="" asp-controller="OfferedCourse" asp-action="AddInstructor" asp-route-id="@e.CourseId" asp-route-year="@e.Year" class="AllBottom" style="    background-color: #664d03;">
+                            <i class="fas fa-plus " style="color:white"></i> <p class="text-white myBotttom">Instructor </p>
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-area="" asp-controller="OfferedCourse" asp-action="Enroll" asp-route-id="@e.CourseId" asp-route-year="@e.Year" class="AllBottom" style="  background-color: #0a58ca;">
+                            <i class="fas fa-plus " style="color:white"></i>  <p class="text-white myBotttom">Enroll</p>
                         </a>
                     </td>
                     <td>

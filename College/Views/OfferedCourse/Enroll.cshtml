@@ -8,17 +8,25 @@
 <form asp-action="Enroll" method="post" class="needs-validation" novalidate>
 
 <div class="form-group mb-3">
-    <label class="form-label">Students</label>
-    <select name="Students" class="form-control" multiple>
-        @foreach (var Student in (IEnumerable<Student>) ViewBag.Students)
-        {
-            <option value="@Student.Id">@Student.Name __ @Student.Id</option>
-        }
-    </select>
+
+
+
+        <div>
+            @foreach (var stu in (IEnumerable<Student>)ViewBag.Students)
+            {
+                <div class=" box  ">
+                    <label class="form-check-label" for="Students-@stu.Id">
+						 @stu.Id - @stu.Name
+                    </label>
+                    <input class="form-check-input" type="checkbox" name="Students" value="@stu.Id" id="Students-@stu.Id">
+
+                </div>
+            }
+        </div>
 </div>
 
-    <div class="d-flex gap-2">
-        <input type="submit" name="Submit" value="Enroll" class="btn btn-primary" />
-        <a class="btn btn-secondary" asp-area="" asp-controller="OfferedCourse" asp-action="Index">Back To List</a>
+    <div class="d-flex gap-2 justify-content-center">
+        <input type="submit" style="padding-left:10%;padding-right:10% " name="Submit" value="Enroll" class="btn btn-primary" />
+        <a class="btn btn-secondary" style="padding-left:10%;padding-right:10% " asp-area="" asp-controller="OfferedCourse" asp-action="Index">Back To List</a>
     </div>
 </form>

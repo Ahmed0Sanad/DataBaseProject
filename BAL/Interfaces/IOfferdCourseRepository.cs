@@ -16,7 +16,8 @@ namespace BAL.Interfaces
         public List<Student> GetStudentsForCourse(int id);
 
         public void AddStudents(int id, int year, List<int> students);
-        public IEnumerable<Student> GetStudentsInCourse(int id);
+        public Dictionary<Student, int> GetStudentsInCourse(int id, int year);
+        public void AddGrades(int id , int year, Dictionary<int,int> grades);
 
 
     }

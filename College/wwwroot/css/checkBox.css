@@ -1,0 +1,38 @@
+﻿.box {
+    position: relative;
+    border: solid 1px gainsboro;
+    border-radius: 25px;
+    padding: 10px;
+    padding-left: 35px;
+    width: 75%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    background-color: #eee;
+    margin-top:5px;
+}
+
+.form-check-input {
+    position: absolute;
+    top: 9px;
+ 
+    height: 20px;
+    width: 20px;
+    right: 20px;
+}
+
+.myBotttom {
+    margin-top: 13px;
+    margin-left: 5px;
+}
+.AllBottom {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: .2rem;
+    padding: .25rem .5rem;
+    height: 32px;
+}
+a{
+    text-decoration:none;
+}

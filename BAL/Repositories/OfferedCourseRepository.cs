@@ -187,11 +187,26 @@ namespace BAL.Repositories
 
             return result;
         }
-        public IEnumerable<Student> GetStudentsInCourse(int id) 
+        public Dictionary<Student,int> GetStudentsInCourse(int id,int year) 
         {
-            var students = _appDbContext.Students.Join(_appDbContext.StudentsCourse,s=>s.Id,sc=>sc.StudentId,(s,sc)=>s).ToList();
+            Dictionary<Student, int> dic = new Dictionary<Student, int>();
+            var studentIds= _appDbContext.StudentsCourse.Where(c=>c.OfferedCourseId==id && c.Year==year).Select(s=>new { s.StudentId ,s.Grade}).ToList();
+            foreach (var student in studentIds) 
+            {
+                var stu = _appDbContext.Students.Where(s =>s.Id==student.StudentId).FirstOrDefault();
+                dic[stu] = student.Grade;
+            
+            }
+            return dic;
 
-            return students;
+        }
+        public void AddGrades(int id, int year, Dictionary<int, int> grades)
+        {
+            foreach (var grade in grades)
+            {
+                var entity = new Enroll() { OfferedCourseId = id, Year = year, StudentId = grade.Key, Grade = grade.Value };
+                _appDbContext.StudentsCourse.Update(entity);
+            }
         }
 
     }

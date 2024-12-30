@@ -82,5 +82,11 @@ namespace College.Controllers
                 return View();
             }
         }
+        [HttpGet]
+        public IActionResult Grade([FromRoute] int id)
+        {
+            
+            return View(_unitOfWork.Students.GetGrades(id));
+        }
     }
 }
